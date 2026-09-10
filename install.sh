@@ -3,7 +3,6 @@ set -euo pipefail
 
 # ============================================================
 # acrostic-decipher — One-Command Installer
-# acrostic-decipher
 #
 # Usage:
 #   curl -fsSL https://raw.githubusercontent.com/jasperan/acrostic-decipher/main/install.sh | bash
@@ -36,7 +35,6 @@ print_banner() {
     echo ""
     echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo -e "${BOLD}  acrostic-decipher${NC}"
-    echo -e "  acrostic-decipher"
     echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
     echo ""
 }
