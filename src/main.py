@@ -21,6 +21,14 @@ def _read_file(path: str, description: str) -> str:
         sys.exit(f'Error: {description} not found at {path}')
 
 
+def _display(s: str) -> str:
+    """Render untrusted text inertly: escape C0/C1/DEL control characters (keeps \n, \t)."""
+    return ''.join(
+        f'\\x{ord(c):02x}' if (ord(c) < 32 and c not in '\n\t') or 127 <= ord(c) < 160 else c
+        for c in s
+    )
+
+
 def process_acrostic(word_list: list[str], text: str) -> None:
     sentences = text.split('. ')
 
@@ -42,7 +50,10 @@ def process_acrostic(word_list: list[str], text: str) -> None:
         needle = word.lower()
         for acrostic_lower, acrostic, sentence in extracted:
             if needle in acrostic_lower:
-                print(f"{word} -> {acrostic} ||| Full sentence: {sentence}")
+                print(
+                    f"{_display(word)} -> {_display(acrostic)} "
+                    f"||| Full sentence: {_display(sentence)}"
+                )
 
 
 def main() -> None:
